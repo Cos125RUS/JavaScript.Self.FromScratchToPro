@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lorem ipsum dolor sit amet.</h1>
+    <div id="forest">
+        <div id="tree1">
+            <div id="squirrel"></div>
+            <div id="flower"></div>
+        </div>
+        <div id="tree2">
+            <div id="shrubbery">
+                <div id="treasure"></div>
+            </div>
+            <div id="mushroom">
+                <div id="bug"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log(document.body.children.forest.children.tree2.children.shrubbery.children.treasure);
+        console.log(document.body.childNodes[3].childNodes[3].childNodes[1].childNodes[1]);
+    </script>
+</body>
+</html>

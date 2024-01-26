@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lorem, ipsum dolor.</h1>
+    <div id="One" class="example">Hi!</div>
+    <div id="Two" class="example">Hi!</div>
+    <div id="Three" class="something">Hi!</div>
+    <script>
+        console.log(document.getElementById("One"));
+        console.log(document.getElementsByTagName("h1"));
+        console.log(document.getElementsByTagName("div").item(1));
+        console.log(document.getElementsByClassName("example"));
+        console.log(document.querySelector("div.something"));
+        console.log(document.querySelectorAll("div"));
+    </script>
+</body>
+</html>
