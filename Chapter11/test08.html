@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+
+    <script>
+        class Log {
+            #message;
+            #eventType;
+            #className;
+            #tagName;
+
+            constructor(message, event){
+                this.#message = message;
+                this.#eventType = event.type;
+                this.#className = event.target.className;
+                this.#tagName = event.target.tagName;
+            }
+        }
+
+        const output = document.querySelector(".output");
+        const message = document.querySelector("input");
+        const btn1 = document.querySelector(".btn1");
+        const btn2 = document.querySelector(".btn2");
+        const btn3 = document.querySelector(".btn3");
+        // let div = btn3.getParent();
+        const log = [];
+
+        btn1.addEventListener("click", addLog);
+        btn2.addEventListener("click", addLog);
+        btn3.addEventListener("click", () => {
+            console.log(log);
+        });
+
+
+        function addLog(event) {
+            log.push(new Log(message.value, event));
+            output.innerHTML = message.value;
+            message.value = '';
+        }
+    </script>
+</body>
+
+</html>

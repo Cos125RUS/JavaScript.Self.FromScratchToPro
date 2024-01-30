@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+        }
+
+        p {
+            border: 1px solid #000;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="red">
+        <p>Red</p>
+    </div>
+    <div id="green">
+        <p>Green</p>
+    </div>
+
+    <script>
+        document.getElementById("red").addEventListener("click", () => {
+            document.body.style.backgroundColor = "red";
+        });
+        document.getElementById("green").addEventListener("click", () => {
+            document.body.style.backgroundColor = "green";
+        });
+    </script>
+</body>
+
+</html>
