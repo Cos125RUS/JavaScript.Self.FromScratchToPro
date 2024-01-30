@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div>
+    <input type="text" placeholder="First Name" name="first"><br>
+    <input type="text" placeholder="Last Name" name="last">
+
+    <script>
+        let out = document.getElementById("output");
+        let first = document.querySelector("input[name='first']");
+        let last = document.querySelector("input[name='last']");
+
+        first.addEventListener("change", (event) => {
+            out.innerText = first.value + ' ' + event.type;
+        });
+
+        last.addEventListener("change", (event) => {
+            out.innerText = last.value + ' ' + event.type;
+        });
+
+        first.addEventListener("blur", (event) => {
+            out.innerText = first.value + ' ' + event.type;
+        });
+
+        last.addEventListener("blur", (event) => {
+            out.innerText = last.value + ' ' + event.type;
+        });
+
+        first.addEventListener("focus", (event) => {
+            out.innerText = first.value + ' ' + event.type;
+        });
+
+        last.addEventListener("focus", (event) => {
+            out.innerText = last.value + ' ' + event.type;
+        });
+    </script>
+</body>
+</html>

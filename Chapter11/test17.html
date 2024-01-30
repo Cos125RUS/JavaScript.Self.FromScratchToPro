@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #fff;
+            
+        }
+        .red {
+            background-color: red;
+        }
+        #dragme {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1
+        <div id="dragme" draggable="true">Drag Me Please!</div>
+    </div>
+    <div class="box">2</div>
+
+    <script>
+        let draggable = document.getElementById("dragme");
+        let divs = document.querySelectorAll(".box");
+
+        draggable.addEventListener("dragstart", () => draggable.style.opacity = .5);
+        draggable.addEventListener("dragend", () => draggable.style.opacity = 1);
+
+        divs.forEach(el => {
+            el.addEventListener("dragenter", () => el.classList.add("red"));
+            el.addEventListener("dragover", event => event.preventDefault());
+            el.addEventListener("dragleave", () => el.classList.remove("red"));
+            el.addEventListener("drop", event => event.target.appendChild(draggable));
+        })
+    </script>
+</body>
+</html>

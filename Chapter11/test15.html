@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <input type="text" name="myNum1">
+    <input type="text" name="myNum2">
+
+    <script>
+        const out = document.getElementById("output");
+        const eles = document.querySelectorAll("input");
+        eles.forEach(el => {
+            el.addEventListener("keydown", (event) => {
+                if (!isNaN(event.key)) {
+                    out.textContent += event.key
+                }
+            });
+            el.addEventListener("keyup", (event) => {
+                console.log(event.key);
+            });
+            el.addEventListener("paste", (event) => {
+                console.log("Pasted");
+            });
+        });
+    </script>
+</body>
+
+</html>
