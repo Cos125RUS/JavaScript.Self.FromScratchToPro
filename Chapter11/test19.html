@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        console.log(window.location);
+        let q = window.location.search;
+        console.log(q);
+        let params = new URLSearchParams(q);
+        console.log(params);
+        let name = params.get('name');
+        console.log(name);
+    </script>
+</body>
+</html>

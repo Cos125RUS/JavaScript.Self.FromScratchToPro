@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: purple;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="counter"></p>
+    <div id="block"></div>
+
+    <script>
+        let element = document.getElementById("block");
+        let viewCounter = document.getElementById("counter");
+        element.addEventListener("click", () => {
+            let width = window.screen.width;
+            let count = 2;
+            let params = {
+                speed: 5,
+                direction: 1,
+                position: 1
+            };
+            setInterval(() => {
+                viewCounter.innerHTML = count;
+                if (count < 1) {
+                    clearInterval();
+                }
+                if (Number(params.position) >= Number(width) || Number(params.position) <= 0) {
+                    count--;
+                    params.direction *= -1;
+                }
+                element.style.left = params.position + "px";
+                params.position += params.speed * params.direction;
+            }, 2);
+        });
+    </script>
+</body>
+
+</html>

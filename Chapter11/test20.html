@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wraper"></div>
+    <form action="test21.html" method="get" onsubmit="return valForm()">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name">
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+        <input type="text" id="age" name="age" placeholder="Age">
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        function valForm() {
+            var p = event.target.children;
+            if(p.firstName.value == "") {
+                message("Need a First Name");
+                return false;
+            } 
+            if(p.lastName.value == "") {
+                message("Need a Last Name");
+                return false;
+            } 
+            if(p.age.value == "") {
+                message("Need a Age");
+                return false;
+            } 
+            return true;
+        }
+
+        function message(m) {
+            document.getElementById("wraper").innerHTML = m;
+        }
+    </script>
+</body>
+</html>
