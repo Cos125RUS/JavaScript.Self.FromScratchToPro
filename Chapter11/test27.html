@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .output {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: auto;
+            text-align: center;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: 50px;
+            left: 20%;
+            background-color: red;
+        }
+
+        .message {
+            text-align: center;
+            padding: 10px;
+            font-size: 1.3em;
+        }
+        .count {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div><h2 class="count">Count: </h2></div>
+    <div class="output"></div>
+    <div class="message"></div>
+
+    <script>
+        let output = document.querySelector('.output');
+        let message = document.querySelector('.message');
+        let box = document.createElement('div');
+        box.classList.add('box');
+        box.addEventListener('click', touchThis);
+        output.appendChild(box);
+        message.innerHTML = "Press to Start";
+        let buttonContainer = document.createElement('div');
+        let startButton = document.createElement('button');
+        startButton.innerText = "Start";
+        buttonContainer.appendChild(startButton);
+        document.body.appendChild(buttonContainer);
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.justifyContent = 'center';
+        startButton.style.fontSize = '1.2em';
+        startButton.addEventListener('click', start);
+        let game = {
+            start: null,
+            finish: null
+        }
+        let counter = 0;
+        let countTitle = document.querySelector('.count');
+
+        function touchThis() {
+            counter++;
+            countTitle.innerHTML = `Count: ${counter}`;
+            addBox();
+        }
+
+        function start() {
+            countTitle.innerHTML += ' ' + counter;
+            counter = 0;
+            let num = generateRandomNum(1000);
+            box.style.display = 'none';
+            setTimeout(addBox, num);
+        }
+
+        function generateRandomNum(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function addBox() {
+            box.style.display = 'block';
+            box.style.top = generateRandomNum(450) + 'px';
+            box.style.left = generateRandomNum(450) + 'px';
+            setTimeout(addBox, generateRandomNum(2500));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stars ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .star {
+            font-size: 2em;
+            color: #ddd;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .orange {
+            color: orange;
+        }
+        .output {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <ul class="stars">
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+    </ul>
+    <div class="output"></div>
+    
+
+    <script>
+        let stars = document.querySelectorAll('.star');
+        let output = document.querySelector('.output');
+
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].setAttribute('value', i + 1);
+            stars[i].addEventListener('click', starRate);
+        }
+
+        function starRate(event) {
+            let rate = event.target.value;
+            output.textContent = `Your rate this ${rate} star`;
+            stars.forEach(star => {
+                if (star.getAttribute('value') <= rate) {
+                    star.classList.add('orange');
+                } else {
+                    star.classList.remove('orange');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

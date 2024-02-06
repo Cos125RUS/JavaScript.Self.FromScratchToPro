@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            margin: 15px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="el1" class="box">lorem1</div>
+        <div id="el2" class="box">lorem2</div>
+        <div id="el3" class="box">lorem3</div>
+        <div id="el4" class="box">lorem4</div>
+    </div>
+
+    <script>
+        let container = document.querySelector('.container');
+        let children = container.children;
+        for (let child of children) {
+            addClickEvent(child);
+        }
+        let div = document.createElement("div");
+        div.textContent = "lorem5";
+        div.setAttribute("id", "el5");
+        div.classList.add("box");
+        container.appendChild(div)
+        addClickEvent(div);
+
+        
+        function addClickEvent(element) {
+            element.addEventListener("click", () => {
+                console.log(element);
+                console.log(element.id);
+                console.log(element.className);
+                console.log(element.tagName);
+                console.log(element.textContent);
+            });
+        }
+    </script>
+</body>
+</html>
