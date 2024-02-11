@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        document.cookie = "name=Valerii;age=35";
+
+        let cookie = decodeURIComponent(document.cookie);
+        let cookieList = cookie.split(';');
+        console.log(cookieList);
+        for (let i = 0; i < cookieList.length; i++) {
+            let c = cookieList[i];
+            if (c.startsWith(' ')) {
+                c = element.trim();
+            }
+            if (c.startsWith('name')) {
+                alert(c.substring(5, c.length));
+            }
+        }
+    </script>
+</body>
+
+</html>

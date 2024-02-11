@@ -25,3 +25,10 @@ console.log("123123123".match(/(123)*/g));
 console.log("123123123".match(/(123){1,2}/g));
 
 console.log(text1.match(/(?<language>javascript)/i));
+
+
+let pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+let validEmail = "valerii_panov_250640@gmail.com";
+let invalidEmail = "val@mail@.com";
+console.log(validEmail.match(pattern));
+console.log(invalidEmail.match(pattern));
