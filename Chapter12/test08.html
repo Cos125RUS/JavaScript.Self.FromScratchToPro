@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ready {
+            background-color: ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>add</button>
+    </div>
+    <ul class="output"></ul>
+    
+    <script>
+        const output = document.querySelector(".output");
+        const input = document.querySelector(".main input");
+        const button = document.querySelector(".main button");
+        const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
+        const addTaskToPage = function(value) {
+            let li = document.createElement("li");
+            li.textContent = value;
+            output.appendChild(li);
+        }
+        
+        tasks.forEach(value => {
+            addTaskToPage(value);
+        });
+
+        button.addEventListener("click", () => {
+            let item = input.value;
+            tasks.push(item);
+            addTaskToPage(item);
+            localStorage.setItem("taskList", JSON.stringify(tasks));
+        });
+    </script>
+</body>
+</html>
