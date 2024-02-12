@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="txtarea1" cols="50" rows="2"></textarea>
+    <button>Get email</button>
+    <textarea name="txtarea2" cols="50" rows="2"></textarea>
+
+    <script>
+        const txtarea1 = document.getElementsByTagName("textarea")[0];
+        const txtarea2 = document.getElementsByTagName("textarea")[1];
+        const btn = document.getElementsByTagName("button")[0];
+        const pattern = /([a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z0-9_.-]+)/gi;
+        const emailList = [];
+        const noDuplicates = [];
+
+        btn.addEventListener("click", () => {
+            let text = txtarea1.value;
+            let checked = text.match(pattern);
+            checked.forEach(e => {
+                emailList.push(e);
+            });
+            duplicate();
+            
+            noDuplicates.forEach(el => {
+                txtarea2.value += el + '\n';
+            });
+        });
+
+        const duplicate = () => {
+            emailList.forEach(e => {
+                noDuplicates.push(e);
+            });
+        }
+    </script>
+</body>
+</html>

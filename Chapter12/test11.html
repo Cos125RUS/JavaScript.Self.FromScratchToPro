@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 0.8em;
+            font-family: sans-serif;
+            font-style: italic;
+        }
+        input {
+            background-color: #ddd;
+            width: 400px;
+            display: block;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <form name="myForm"> Email:
+        <input type="text" name="email"> <span class="error hide"></span>
+        <br> Password: 
+        <input type="password" name="password"> <span class="error hide"></span>
+        <br> User Name:
+        <input type="text" name="username"> <span class="error hide"></span>
+        <br>
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <script>
+        const email = document.getElementsByTagName("input")[0];
+        const password = document.getElementsByTagName("input")[1];
+        const userName = document.getElementsByTagName("input")[2];
+        const btn = document.getElementsByTagName("input")[3];
+        const errors = document.querySelectorAll(".error");
+        const pattern = /([a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z0-9_.-]+)/gi;
+
+        errors.forEach( el => el.classList.add("hide"));
+
+        btn.addEventListener("click", (e) => {
+        e.preventDefault();
+            if (!email.value.match(pattern)) {
+                errorAttention(email);
+            }
+            if (userName.value.length < 3 || userName.value.match(/\s/gi)) {
+                errorAttention(userName);
+            }
+            if (password.value.length < 3 || password.value.length > 8 || !password.value.match(/([a-zA-Z0-9]+)/gi)) {
+                errorAttention(password);
+            }
+        });
+
+        const errorAttention = (el) => {
+            let span = el.nextElementSibling;
+            span.classList.toggle("hide");
+            span.innerText = el.name + " entry error";
+            // el.onfocus = true;
+        }
+    </script>
+</body>
+</html>
