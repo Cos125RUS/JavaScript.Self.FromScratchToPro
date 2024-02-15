@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .thumb {
+            max-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" multiple accept="image/*">
+    <div class="output"></div>
+
+    <script>
+        const out = document.querySelector(".output");
+        const input = document.querySelector("input");
+        input.addEventListener("change", read);
+
+        function read(event) {
+            const files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const img = document.createElement("img");
+                img.classList.add("thumb");
+                img.file = file;
+                out.appendChild(img);
+                const reader = new FileReader();
+                reader.onload = (function(myImg) {
+                    return function(e) {
+                        myImg.src = e.target.result;
+                    };
+                })(img);
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+
+</html>
