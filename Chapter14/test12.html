@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="squareColor">
+    <br>
+    <img src="" width="200" height="200" id="holder">
+    <input type="button" id="save" value="save">
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 200;
+        canvas.height = 200;
+        const penColor = document.getElementById("squareColor");
+        penColor.addEventListener("change", function () {
+            let color = event.target.value;
+            draw(color);
+        });
+        document.getElementById("save").addEventListener("click", function () {
+            let dataURL = canvas.toDataURL();
+            document.getElementById("holder").src = dataURL;
+        });
+        function draw(color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(70, 70, 70, 100);
+        }
+    </script>
+</body>
+
+</html>

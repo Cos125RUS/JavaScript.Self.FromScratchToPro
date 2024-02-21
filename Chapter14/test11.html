@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            max-height: 90vh;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="imgLoader">
+    <br>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        const imgLoader = document.getElementById("imgLoader");
+        imgLoader.addEventListener("change", () => {
+            const reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = () => {
+                let img = new Image();
+                img.src = event.target.result;
+                img.onload = () => {
+                    canvas.width = img.width / 2;
+                    canvas.height = img.height / 2;
+                    context.drawImage(img, 0, 0);
+                };
+            };
+        });
+    </script>
+</body>
+</html>
