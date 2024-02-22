@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            margin-left: 2px;
+            /* margin-top: 1px; */
+        }
+
+        canvas {
+            box-sizing: border-box;
+            border: 1px solid #000;
+            width: 99vw;
+            height: 99vh;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const colVal = [];
+        for (let i = 0; i < canvas.width / 10; i++) {
+            colVal.push(0);
+        }
+        setInterval(matrix, 50);
+        function matrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, .05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "green";
+            colVal.map((posY, index) => {
+                const num = Math.floor(Math.random() * 10 % 2);
+                const posX = (index * 10) + 10;
+                ctx.fillText(num, posX, posY);
+                if (posY > 100 + Math.random() * 300) {
+                    colVal[index] = 0;
+                } else {
+                    colVal[index] = posY + 10;
+                }
+            });
+        } 
+    </script>
+</body>
+
+</html>
