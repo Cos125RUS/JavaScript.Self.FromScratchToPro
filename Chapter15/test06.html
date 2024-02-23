@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url = "list.json";
+        fetch(url).then(rep => rep.json()).then(data => data.forEach(el => console.log(`${el.name} ${el.age}`)));
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="!hide">
+            Lorem ipsum dolor sit amet. <br>
+            Lorem ipsum dolor sit amet. <br>
+            Lorem ipsum dolor sit amet. <br>
+        </p>
+    </div>
+    <script>
+        let obj = new Vue({
+            el: "#app",
+            data: {
+                hide: false,
+            }
+        });
+    </script>
+</body>
+</html>
